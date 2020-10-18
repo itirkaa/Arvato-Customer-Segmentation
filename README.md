@@ -1,7 +1,8 @@
 # Arvato-Customer-Segmentation
 _Customer segmentation report using machine learning for arvato financials_
 
-The goal of this project is to help a mail-order sales company in Germany to identify segments of the general population to target with their marketing to grow.
+## Problem Statment
+The goal of this project is to help a mail-order sales company in Germany to identify segments of the general population to target with their marketing to grow. The company has provided us with the demographic data of their current customers and the general population. We’ve to build a customer-segmentation machine learning model for the company, which correctly categorizes customers into groups and identifies the customers that the company should target.
 
 ## Datasets and Inputs
 
@@ -17,4 +18,8 @@ targets of a marketing campaign; 42 833 persons (rows) x 366 (columns).
 
 The data required for the project has been provided by Bertelsmann Arvato Analytics for the completion of Machine Learning Nanodegree capstone project. The data can be accessed from udacity platform only.
 
-Note: I also accept all the terms and conditions given in the terms_and_conditions folder.
+## Authors
+[Aakriti Sharma](https://github.com/itirkaa)
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
