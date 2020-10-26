@@ -150,10 +150,12 @@ def preprocess(df):
     :return: processed dataframe
     """
     # Downcasting all datatypes
-    print("Downcasting dataframe...")
-    print("Memory usage before downcasting:\n{}".format(df.info(memory_usage=True)))
+    print("----------------PART-1(Identifying missing data and data-types)----------------")
+    print("Downcasting dataframe...\nMemory usage before downcasting:")
+    print(df.info(memory_usage=True))
     df = downcast_dtypes(df, cat=True)
-    print("Memory usage after downcasting:\n{}\n".format(df.info(memory_usage=True)))
+    print("Memory usage after downcasting:")
+    print(df.info(memory_usage=True))
     
     # Identifying and replacing values representing unknown or missing data
     print("Identifying and replacing values representing unknown or missing data...")
@@ -170,6 +172,7 @@ def preprocess(df):
         df[col] = pd.to_numeric(df[col], downcast='integer')
         
     # Removing columns
+    print("----------------PART-2(Removing Columns)----------------")
     print("Removing {} columns...".format(REMOVE_COLS))
     df = df.drop(REMOVE_COLS, axis=1)
     print("Shape after removing data:{}\n".format(df.shape))
@@ -177,25 +180,26 @@ def preprocess(df):
     # Binning levels data
     print("Bining columns...\n")
     df = binning_level_data(df)
-    
+
     # Imputing missing data
-    print("Imputing missing data...")
+    print("----------------PART-3(Imputing missing data)----------------")
     df = impute(df)
     
     # Encoding categorical data
-    print("Encoding categorical data...")
+    print("----------------PART-4(Encoding categorical data)----------------")
     print("Shape before encoding", df.shape)
     df = pd.get_dummies(df)
     print("Shape after encoding", df.shape)
     
     # Scaling data
-    print("Scaling data...")
+    print("----------------PART-4(Scaling data)----------------")
     df = scale(df)
     
     # Downcasting all numeric data
     print("Downcasting data...")
     df = downcast_dtypes(df)
-    print("Memory usage after downcasting:\n{}\n".format(df.info(memory_usage=True)))
+    print("Memory usage after downcasting:")
+    print(df.info(memory_usage=True))
 
     return df
 
@@ -210,7 +214,7 @@ def predict_clusters(df):
     df.drop(['LNR'], axis=1, inplace=True)
     
     pca = joblib.load('models/pca.save')
-    kmeans = joblib.load('models/kmeans.save')
+    kmeans = joblib.load('models/kmodel.save')
     
     print("Performing Dimensionality Reduction using PCA...")
     print("Shape before PCA:", df.shape)
